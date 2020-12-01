@@ -16,7 +16,7 @@ public class Solution {
     for (int i : expenseReport) {
       int diff = 2020 - i;
       if (seen.contains(diff)) {
-        return (diff) * i;
+        return diff * i;
       }
       seen.add(i);
     }
