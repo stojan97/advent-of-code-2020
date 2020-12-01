@@ -1,0 +1,12 @@
+# IntelliJ
+.idea/*
+!.idea/codeStyles
+!.idea/runConfigurations
+!.idea/checkstyle-config-88.xml
+!.idea/checkstyle-idea.xml
+!.idea/suppressions.xml
+!.idea/runConfigurations/*
+*.iml
+
+# Build
+target
