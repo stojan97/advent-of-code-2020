@@ -7,7 +7,7 @@ import aoc.utils.FileReader;
 
 public class Solution {
 
-  private static int getValidPasswords(List<String> lines, Supplier booleanSupplier) {
+  private static int getValidPasswords(List<String> lines, BooleanSupplier booleanSupplier) {
 
     int validPasswords = 0;
 
@@ -46,7 +46,7 @@ public class Solution {
   }
 
   @FunctionalInterface
-  private interface Supplier {
+  private interface BooleanSupplier {
 
     boolean getBoolean(int first, int second, List<Character> chars, char letter, long count);
   }
