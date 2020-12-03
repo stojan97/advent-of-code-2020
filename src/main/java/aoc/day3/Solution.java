@@ -42,25 +42,7 @@ public class Solution {
 
   }
 
-  private static int getTreesCount(List<List<Character>> treeMap) {
-
-    int count = 0;
-    int currentRow = 0;
-    int currentCol = 0;
-    int rowSize = treeMap.size();
-    int colSize = treeMap.get(0).size();
-
-    for (; currentRow < rowSize; currentRow++, currentCol = (currentCol + 3) % colSize) {
-
-      if (treeMap.get(currentRow).get(currentCol) == '#') {
-        count++;
-      }
-    }
-
-    return count;
-  }
-
-  private static int getTreesCountByAllSlopes(List<Slope> slopes, List<List<Character>> treeMap) {
+  private static void calculateTreesCountForAllSlopes(List<Slope> slopes, List<List<Character>> treeMap) {
 
     int rowSize = treeMap.size();
 
@@ -69,8 +51,6 @@ public class Solution {
       countTreesForNotFinishedSlopes(slopes, treeMap);
       traverseMapForNotFinishedSlopes(slopes, treeMap);
     }
-
-    return multiplyTreesCountForAllSlopes(slopes);
   }
 
   private static int multiplyTreesCountForAllSlopes(List<Slope> slopes) {
@@ -110,8 +90,6 @@ public class Solution {
 
     List<List<Character>> treeMap = FileReader.readLinesAs2dMap("aoc/day3/input.txt");
 
-    int trees = getTreesCount(treeMap);
-
     List<Slope> slopes = new ArrayList<>();
     slopes.add(new Slope(1, 1));
     slopes.add(new Slope(1, 3));
@@ -119,9 +97,12 @@ public class Solution {
     slopes.add(new Slope(1, 7));
     slopes.add(new Slope(2, 1));
 
-    int treesCountByAllSlopes = getTreesCountByAllSlopes(slopes, treeMap);
+    calculateTreesCountForAllSlopes(slopes, treeMap);
 
-    System.out.println("Part 1: " + trees);
-    System.out.println("Part 2: " + treesCountByAllSlopes);
+    int firstPartTreesCount = slopes.get(1).count;
+    int productOfSlopesCount = multiplyTreesCountForAllSlopes(slopes);
+
+    System.out.println("Part 1: " + firstPartTreesCount);
+    System.out.println("Part 2: " + productOfSlopesCount);
   }
 }
