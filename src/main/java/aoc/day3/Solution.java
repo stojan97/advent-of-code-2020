@@ -66,14 +66,14 @@ public class Solution {
 
     while (notFinished(slopes, rowSize)) {
 
-      countTreesForAllSlopes(slopes, treeMap);
-      traverseMapForAllSlopes(slopes, treeMap);
+      countTreesForNotFinishedSlopes(slopes, treeMap);
+      traverseMapForNotFinishedSlopes(slopes, treeMap);
     }
 
-    return productOfAllSlopesCount(slopes);
+    return multiplyTreesCountForAllSlopes(slopes);
   }
 
-  private static int productOfAllSlopesCount(List<Slope> slopes) {
+  private static int multiplyTreesCountForAllSlopes(List<Slope> slopes) {
 
     return slopes
       .stream()
@@ -81,13 +81,13 @@ public class Solution {
       .reduce(1, Math::multiplyExact);
   }
 
-  private static void traverseMapForAllSlopes(List<Slope> slopes, List<List<Character>> treeMap) {
+  private static void traverseMapForNotFinishedSlopes(List<Slope> slopes, List<List<Character>> treeMap) {
 
     List<Slope> notFinishedSlopes = getNotFinishedSlopes(slopes, treeMap.size());
     notFinishedSlopes.forEach(slope -> slope.traverseMap(treeMap.get(0).size()));
   }
 
-  private static void countTreesForAllSlopes(List<Slope> slopes, List<List<Character>> treeMap) {
+  private static void countTreesForNotFinishedSlopes(List<Slope> slopes, List<List<Character>> treeMap) {
 
     List<Slope> notFinishedSlopes = getNotFinishedSlopes(slopes, treeMap.size());
     notFinishedSlopes.forEach(slope -> slope.countTreeForSlope(treeMap));
