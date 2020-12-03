@@ -16,7 +16,7 @@ public class Solution {
       String[] s = line.split(" ");
       String[] numbers = s[0].split("-");
       char letter = s[1].split(":")[0].charAt(0);
-      List<Character> chars = s[2].chars().mapToObj(c -> (char) c).collect(Collectors.toList());
+      List<Character> chars = FileReader.toListOfChars(s[2]);
       long count = chars.stream().filter(c -> c == letter).count();
       int first = Integer.parseInt(numbers[0]);
       int second = Integer.parseInt(numbers[1]);
