@@ -26,14 +26,19 @@ public final class FileReader {
     }
   }
 
-  public static List<List<Character>> readLinesAs2dMap(String path) {
+  public static char[][] readLinesAs2dMap(String path) {
 
     List<String> lines = readLines(path);
 
-    return lines
-      .stream()
-      .map(FileReader::toListOfChars)
-      .collect(Collectors.toList());
+    char[][] map = new char[lines.size()][lines.get(0).length()];
+
+    for (int i = 0; i < lines.size(); i++) {
+      for (int j = 0; j < lines.get(i).length(); j++) {
+        map[i][j] = lines.get(i).charAt(j);
+      }
+    }
+
+    return map;
   }
 
   public static List<Character> toListOfChars(String line) {

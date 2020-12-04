@@ -27,9 +27,9 @@ public class Solution {
       this.dj = dj;
     }
 
-    public void countTreeForSlope(List<List<Character>> treeMap) {
+    public void countTreeForSlope(char[][] treeMap) {
 
-      if (treeMap.get(currentRow).get(currentCol) == '#') {
+      if (treeMap[currentRow][currentCol] == '#') {
         count++;
       }
     }
@@ -42,9 +42,9 @@ public class Solution {
 
   }
 
-  private static void calculateTreesCountForAllSlopes(List<Slope> slopes, List<List<Character>> treeMap) {
+  private static void calculateTreesCountForAllSlopes(List<Slope> slopes, char[][] treeMap) {
 
-    int rowSize = treeMap.size();
+    int rowSize = treeMap.length;
 
     while (notFinished(slopes, rowSize)) {
 
@@ -61,15 +61,15 @@ public class Solution {
       .reduce(1, Math::multiplyExact);
   }
 
-  private static void traverseMapForNotFinishedSlopes(List<Slope> slopes, List<List<Character>> treeMap) {
+  private static void traverseMapForNotFinishedSlopes(List<Slope> slopes, char[][] treeMap) {
 
-    List<Slope> notFinishedSlopes = getNotFinishedSlopes(slopes, treeMap.size());
-    notFinishedSlopes.forEach(slope -> slope.traverseMap(treeMap.get(0).size()));
+    List<Slope> notFinishedSlopes = getNotFinishedSlopes(slopes, treeMap.length);
+    notFinishedSlopes.forEach(slope -> slope.traverseMap(treeMap[0].length));
   }
 
-  private static void countTreesForNotFinishedSlopes(List<Slope> slopes, List<List<Character>> treeMap) {
+  private static void countTreesForNotFinishedSlopes(List<Slope> slopes, char[][] treeMap) {
 
-    List<Slope> notFinishedSlopes = getNotFinishedSlopes(slopes, treeMap.size());
+    List<Slope> notFinishedSlopes = getNotFinishedSlopes(slopes, treeMap.length);
     notFinishedSlopes.forEach(slope -> slope.countTreeForSlope(treeMap));
   }
 
@@ -88,7 +88,7 @@ public class Solution {
 
   public static void main(String[] args) {
 
-    List<List<Character>> treeMap = FileReader.readLinesAs2dMap("aoc/day3/input.txt");
+    char[][] treeMap = FileReader.readLinesAs2dMap("aoc/day3/input.txt");
 
     List<Slope> slopes = new ArrayList<>();
     slopes.add(new Slope(1, 1));
