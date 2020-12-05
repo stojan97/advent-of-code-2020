@@ -9,6 +9,18 @@ import aoc.utils.FileReader;
 
 public class Solution {
 
+  public static void main(String[] args) {
+
+    List<String> lines = FileReader.readLines("aoc/day1/input.txt");
+    List<Integer> expenseReport = lines.stream().map(Integer::parseInt).collect(Collectors.toList());
+
+    int productForTwo = getProductForTwoEntries(expenseReport);
+    int productForThree = getProductForThreeEntries(expenseReport);
+
+    System.out.println("Part 1: " + productForTwo);
+    System.out.println("Part 2: " + productForThree);
+  }
+
   private static int getProductForTwoEntries(List<Integer> expenseReport) {
 
     Set<Integer> seen = new HashSet<>();
@@ -40,17 +52,5 @@ public class Solution {
     }
 
     return 0;
-  }
-
-  public static void main(String[] args) {
-
-    List<String> lines = FileReader.readLines("aoc/day1/input.txt");
-    List<Integer> expenseReport = lines.stream().map(Integer::parseInt).collect(Collectors.toList());
-
-    int productForTwo = getProductForTwoEntries(expenseReport);
-    int productForThree = getProductForThreeEntries(expenseReport);
-
-    System.out.println("Part 1: " + productForTwo);
-    System.out.println("Part 2: " + productForThree);
   }
 }

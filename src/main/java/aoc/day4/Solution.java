@@ -12,6 +12,18 @@ public class Solution {
 
   private static final List<String> SUPPORTED_EYE_COLORS = Arrays.asList("amb", "blu", "brn", "gry", "grn", "hzl", "oth");
 
+  public static void main(String[] args) {
+
+    List<String> lines = FileReader.readLines("aoc/day4/input.txt");
+
+    int validPassports = getValidPassports(lines, Solution::validateFields);
+
+    int validPassportsAllChecks = getValidPassports(lines, Solution::validateFields, Solution::validateValues);
+
+    System.out.println("Part 1: " + validPassports);
+    System.out.println("Part 2: " + validPassportsAllChecks);
+  }
+
   private static Map<String, String> extractFields(String line) {
 
     if (line.isEmpty()) {
@@ -122,18 +134,6 @@ public class Solution {
     }
 
     return result;
-  }
-
-  public static void main(String[] args) {
-
-    List<String> lines = FileReader.readLines("aoc/day4/input.txt");
-
-    int validPassports = getValidPassports(lines, Solution::validateFields);
-
-    int validPassportsAllChecks = getValidPassports(lines, Solution::validateFields, Solution::validateValues);
-
-    System.out.println("Part 1: " + validPassports);
-    System.out.println("Part 2: " + validPassportsAllChecks);
   }
 
   @FunctionalInterface

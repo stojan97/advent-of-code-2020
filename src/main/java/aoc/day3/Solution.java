@@ -8,38 +8,24 @@ import aoc.utils.FileReader;
 
 public class Solution {
 
-  private static class Slope {
+  public static void main(String[] args) {
 
-    public int di;
-    public int dj;
-    public int currentRow = 0;
-    public int currentCol = 0;
-    public int count = 0;
+    char[][] treeMap = FileReader.readLinesAs2dMap("aoc/day3/input.txt");
 
-    public int getCount() {
+    List<Slope> slopes = new ArrayList<>();
+    slopes.add(new Slope(1, 1));
+    slopes.add(new Slope(1, 3));
+    slopes.add(new Slope(1, 5));
+    slopes.add(new Slope(1, 7));
+    slopes.add(new Slope(2, 1));
 
-      return count;
-    }
+    calculateTreesCountForAllSlopes(slopes, treeMap);
 
-    private Slope(int di, int dj) {
+    int firstPartTreesCount = slopes.get(1).count;
+    int productOfSlopesCount = multiplyTreesCountForAllSlopes(slopes);
 
-      this.di = di;
-      this.dj = dj;
-    }
-
-    public void countTreeForSlope(char[][] treeMap) {
-
-      if (treeMap[currentRow][currentCol] == '#') {
-        count++;
-      }
-    }
-
-    public void traverseMap(int colSize) {
-
-      currentRow += di;
-      currentCol = (currentCol + dj) % colSize;
-    }
-
+    System.out.println("Part 1: " + firstPartTreesCount);
+    System.out.println("Part 2: " + productOfSlopesCount);
   }
 
   private static void calculateTreesCountForAllSlopes(List<Slope> slopes, char[][] treeMap) {
@@ -86,23 +72,37 @@ public class Solution {
       .collect(Collectors.toList());
   }
 
-  public static void main(String[] args) {
+  private static class Slope {
+    public int di;
+    public int dj;
+    public int currentRow = 0;
+    public int currentCol = 0;
 
-    char[][] treeMap = FileReader.readLinesAs2dMap("aoc/day3/input.txt");
+    public int count = 0;
 
-    List<Slope> slopes = new ArrayList<>();
-    slopes.add(new Slope(1, 1));
-    slopes.add(new Slope(1, 3));
-    slopes.add(new Slope(1, 5));
-    slopes.add(new Slope(1, 7));
-    slopes.add(new Slope(2, 1));
+    public int getCount() {
 
-    calculateTreesCountForAllSlopes(slopes, treeMap);
+      return count;
+    }
 
-    int firstPartTreesCount = slopes.get(1).count;
-    int productOfSlopesCount = multiplyTreesCountForAllSlopes(slopes);
+    private Slope(int di, int dj) {
 
-    System.out.println("Part 1: " + firstPartTreesCount);
-    System.out.println("Part 2: " + productOfSlopesCount);
+      this.di = di;
+      this.dj = dj;
+    }
+
+    public void countTreeForSlope(char[][] treeMap) {
+
+      if (treeMap[currentRow][currentCol] == '#') {
+        count++;
+      }
+    }
+
+    public void traverseMap(int colSize) {
+
+      currentRow += di;
+      currentCol = (currentCol + dj) % colSize;
+    }
+
   }
 }
