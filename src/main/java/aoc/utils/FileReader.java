@@ -37,9 +37,10 @@ public final class FileReader {
       if (line.isEmpty()) {
         result.add(toAddList);
         toAddList = new ArrayList<>();
+      } else {
+        toAddList.add(line);
       }
 
-      toAddList.add(line);
     }
 
     result.add(toAddList);
