@@ -16,8 +16,8 @@ public class Solution {
 
     int count = getCounts(lines);
     int countsAnsweredByEveryone = getCountsAnsweredByEveryone(lines);
-    System.out.println(count);
-    System.out.println(countsAnsweredByEveryone);
+    System.out.println("Part 1: " + count);
+    System.out.println("Part 2: " + countsAnsweredByEveryone);
   }
 
   private static int getCounts(List<List<String>> lines) {
