@@ -3,6 +3,7 @@ package aoc.utils;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -26,6 +27,26 @@ public final class FileReader {
     }
   }
 
+  public static List<List<String>> readLinesByGroups(String path) {
+
+    List<String> lines = readLines(path);
+    List<List<String>> result = new ArrayList<>();
+    List<String> toAddList = new ArrayList<>();
+
+    for (String line : lines) {
+      if (line.isEmpty()) {
+        result.add(toAddList);
+        toAddList = new ArrayList<>();
+      }
+
+      toAddList.add(line);
+    }
+
+    result.add(toAddList);
+
+    return result;
+  }
+
   public static char[][] readLinesAs2dMap(String path) {
 
     List<String> lines = readLines(path);
@@ -43,10 +64,7 @@ public final class FileReader {
 
   public static List<Character> toListOfChars(String line) {
 
-    return line
-      .chars()
-      .mapToObj(c -> (char) c)
-      .collect(Collectors.toList());
+    return line.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
   }
 
 }

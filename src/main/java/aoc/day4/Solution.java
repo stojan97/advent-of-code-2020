@@ -14,7 +14,7 @@ public class Solution {
 
   public static void main(String[] args) {
 
-    List<String> lines = FileReader.readLines("aoc/day4/input.txt");
+    List<List<String>> lines = FileReader.readLinesByGroups("aoc/day4/input.txt");
 
     int validPassports = getValidPassports(lines, Solution::validateFields);
 
@@ -41,22 +41,17 @@ public class Solution {
     return fields;
   }
 
-  private static int getValidPassports(List<String> lines, BooleanSupplier... booleanSuppliers) {
+  private static int getValidPassports(List<List<String>> lines, BooleanSupplier... booleanSuppliers) {
 
-    Map<String, String> seenFields = new HashMap<>();
     int count = 0;
 
-    for (int i = 0; i < lines.size(); i++) {
-
-      String line = lines.get(i);
-      seenFields.putAll(extractFields(line));
-
-      if (line.isEmpty() || i == lines.size() - 1) {
-
-        if (checkBooleans(seenFields, booleanSuppliers)) {
-          count++;
-        }
-        seenFields.clear();
+    for (List<String> group : lines) {
+      Map<String, String> seenFields = new HashMap<>();
+      for (String line : group) {
+        seenFields.putAll(extractFields(line));
+      }
+      if (checkBooleans(seenFields, booleanSuppliers)) {
+        count++;
       }
     }
 
