@@ -29,9 +29,9 @@ public final class FileReader {
     }
   }
 
-  public static List<List<String>> readLinesByGroups(String path) {
+  public static List<List<String>> readLinesByGroups(String day) {
 
-    List<String> lines = readLines(path);
+    List<String> lines = readLines(day);
     List<List<String>> result = new ArrayList<>();
     List<String> toAddList = new ArrayList<>();
 
@@ -50,9 +50,9 @@ public final class FileReader {
     return result;
   }
 
-  public static char[][] readLinesAs2dMap(String path) {
+  public static char[][] readLinesAs2dMap(String day) {
 
-    List<String> lines = readLines(path);
+    List<String> lines = readLines(day);
 
     char[][] map = new char[lines.size()][lines.get(0).length()];
 
@@ -67,7 +67,10 @@ public final class FileReader {
 
   public static List<Character> toListOfChars(String line) {
 
-    return line.chars().mapToObj(c -> (char) c).collect(Collectors.toList());
+    return line
+      .chars()
+      .mapToObj(c -> (char) c)
+      .collect(Collectors.toList());
   }
 
 }
