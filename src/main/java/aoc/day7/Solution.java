@@ -40,7 +40,7 @@ public class Solution {
 
     int count = 0;
     for (String bag : rules.keySet()) {
-      if (!bag.equals(SHINY_GOLD) && traverseToFindOuterMostBag(bag, rules)) {
+      if (!bag.equals(SHINY_GOLD) && traverse(bag, rules)) {
         count++;
       }
     }
@@ -48,7 +48,7 @@ public class Solution {
     return count;
   }
 
-  private static boolean traverseToFindOuterMostBag(String currentBag, Map<String, List<Bag>> rules) {
+  private static boolean traverse(String currentBag, Map<String, List<Bag>> rules) {
 
     if (currentBag.equals(SHINY_GOLD)) {
       return true;
@@ -59,7 +59,7 @@ public class Solution {
     List<Bag> bags = rules.get(currentBag);
 
     for (Bag bag : bags) {
-      res |= traverseToFindOuterMostBag(bag.color, rules);
+      res |= traverse(bag.color, rules);
     }
 
     return res;
