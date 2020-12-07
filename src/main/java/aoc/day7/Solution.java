@@ -92,12 +92,6 @@ public class Solution {
     int quantity;
     String color;
 
-    @Override
-    public String toString() {
-
-      return "Bag{" + "quantity=" + quantity + ", color='" + color + '\'' + '}';
-    }
-
     public Bag(int quantity, String color) {
 
       this.quantity = quantity;
