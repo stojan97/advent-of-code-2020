@@ -9,7 +9,7 @@ public class Solution {
 
   public static void main(String[] args) {
 
-    List<String> lines = FileReader.readLines("aoc/day2/input.txt");
+    List<String> lines = FileReader.readLines("day2");
 
     int validPasswordsByCount = getValidPasswords(
       lines,

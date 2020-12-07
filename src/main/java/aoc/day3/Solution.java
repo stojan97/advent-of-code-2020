@@ -10,7 +10,7 @@ public class Solution {
 
   public static void main(String[] args) {
 
-    char[][] treeMap = FileReader.readLinesAs2dMap("aoc/day3/input.txt");
+    char[][] treeMap = FileReader.readLinesAs2dMap("day3");
 
     List<Slope> slopes = new ArrayList<>();
     slopes.add(new Slope(1, 1));

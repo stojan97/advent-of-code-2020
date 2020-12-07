@@ -11,7 +11,7 @@ public class Solution {
 
   public static void main(String[] args) {
 
-    List<String> lines = FileReader.readLines("aoc/day1/input.txt");
+    List<String> lines = FileReader.readLines("day1");
     List<Integer> expenseReport = lines.stream().map(Integer::parseInt).collect(Collectors.toList());
 
     int productForTwo = getProductForTwoEntries(expenseReport);

@@ -10,7 +10,7 @@ public class Solution {
 
   public static void main(String[] args) {
 
-    List<String> lines = FileReader.readLines("aoc/day5/input.txt");
+    List<String> lines = FileReader.readLines("day5");
 
     List<Integer> allSeats = getAllSeats(lines);
     int highestSeatOnTheBoardingPass = getHighestSeat(allSeats);

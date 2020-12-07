@@ -14,7 +14,7 @@ public class Solution {
 
   public static void main(String[] args) {
 
-    List<List<String>> lines = FileReader.readLinesByGroups("aoc/day4/input.txt");
+    List<List<String>> lines = FileReader.readLinesByGroups("day4");
 
     int validPassports = getValidPassports(lines, Solution::validateFields);
 

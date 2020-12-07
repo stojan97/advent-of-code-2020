@@ -14,7 +14,9 @@ public final class FileReader {
 
   }
 
-  public static List<String> readLines(String path) {
+  public static List<String> readLines(String day) {
+
+    String path = String.format("aoc/%s/input.txt", day);
 
     ClassLoader classLoader = FileReader.class.getClassLoader();
     File file = new File(Objects.requireNonNull(classLoader.getResource(path)).getFile());

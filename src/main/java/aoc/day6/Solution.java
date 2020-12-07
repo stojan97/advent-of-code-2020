@@ -12,7 +12,7 @@ public class Solution {
 
   public static void main(String[] args) {
 
-    List<List<String>> lines = FileReader.readLinesByGroups("aoc/day6/input.txt");
+    List<List<String>> lines = FileReader.readLinesByGroups("day6");
 
     int count = getCounts(lines);
     int countsAnsweredByEveryone = getCountsAnsweredByEveryone(lines);
