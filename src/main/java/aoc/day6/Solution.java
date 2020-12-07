@@ -24,7 +24,7 @@ public class Solution {
 
     int count = 0;
 
-    for (List<String> group: lines) {
+    for (List<String> group : lines) {
       Set<Character> seenFields = new HashSet<>();
 
       for (String line : group) {
@@ -42,7 +42,7 @@ public class Solution {
 
     int count = 0;
 
-    for (List<String> group: lines) {
+    for (List<String> group : lines) {
       Map<Character, Integer> seenFields = new HashMap<>();
 
       for (String line : group) {
@@ -53,7 +53,7 @@ public class Solution {
 
       for (Map.Entry<Character, Integer> entry : seenFields.entrySet()) {
         if (entry.getValue() == group.size()) {
-         count++;
+          count++;
         }
       }
 
