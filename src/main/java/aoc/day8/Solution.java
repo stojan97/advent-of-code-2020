@@ -13,7 +13,7 @@ public class Solution {
 
     List<String> lines = FileReader.readLines("day8");
     Result result = getGlobalAccumulator(lines);
-    int globalAccumulatorAfterFixingJump = getGlobalAccumulatorAfterFixingJump(lines);
+    int globalAccumulatorAfterFixingJump = getGlobalAccumulatorAfterFixingTheLoop(lines);
     System.out.println("Part 1: " + result.accumulator);
     System.out.println("Part 2: " + globalAccumulatorAfterFixingJump);
   }
@@ -52,7 +52,7 @@ public class Solution {
     return result;
   }
 
-  private static int getGlobalAccumulatorAfterFixingJump(List<String> lines) {
+  private static int getGlobalAccumulatorAfterFixingTheLoop(List<String> lines) {
 
     for (int i = 0; i < lines.size(); i++) {
       String[] instruction = lines.get(i).split(" ");
