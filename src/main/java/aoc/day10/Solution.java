@@ -45,18 +45,18 @@ public class Solution {
 
   private static long getNumberOfArrangements(List<Integer> adapters) {
 
-    Map<Integer, Long> adaptersMap = adapters.stream().collect(Collectors.toMap(Integer::intValue, integer -> 0L));
-    adaptersMap.put(0, 1L);
+    Map<Integer, Long> dpMap = adapters.stream().collect(Collectors.toMap(Integer::intValue, integer -> 0L));
+    dpMap.put(0, 1L);
 
     for (int i = 1; i < adapters.size(); i++) {
       int current = adapters.get(i);
-      long one = adaptersMap.getOrDefault(current - 1, 0L);
-      long two = adaptersMap.getOrDefault(current - 2, 0L);
-      long three = adaptersMap.getOrDefault(current - 3, 0L);
+      long one = dpMap.getOrDefault(current - 1, 0L);
+      long two = dpMap.getOrDefault(current - 2, 0L);
+      long three = dpMap.getOrDefault(current - 3, 0L);
 
-      adaptersMap.put(current, one + two + three);
+      dpMap.put(current, one + two + three);
     }
 
-    return adaptersMap.get(adapters.get(adapters.size() - 1));
+    return dpMap.get(adapters.get(adapters.size() - 1));
   }
 }
