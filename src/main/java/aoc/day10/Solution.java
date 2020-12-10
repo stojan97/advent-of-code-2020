@@ -45,7 +45,7 @@ public class Solution {
 
   private static long getNumberOfArrangements(List<Integer> adapters) {
 
-    Map<Integer, Long> dpMap = adapters.stream().collect(Collectors.toMap(Integer::intValue, integer -> 0L));
+    Map<Integer, Long> dpMap = adapters.stream().collect(Collectors.toMap(Integer::intValue, arrangements -> 0L));
     dpMap.put(0, 1L);
 
     for (int i = 1; i < adapters.size(); i++) {
