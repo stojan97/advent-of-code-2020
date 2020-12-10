@@ -1,6 +1,7 @@
 package aoc.day10;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -45,7 +46,7 @@ public class Solution {
 
   private static long getNumberOfArrangements(List<Integer> adapters) {
 
-    Map<Integer, Long> dpMap = adapters.stream().collect(Collectors.toMap(Integer::intValue, arrangements -> 0L));
+    Map<Integer, Long> dpMap = new HashMap<>();
     dpMap.put(0, 1L);
 
     for (int i = 1; i < adapters.size(); i++) {
