@@ -24,23 +24,6 @@ public class Solution {
     System.out.println("Part 2: " + numberOfArrangements);
   }
 
-  private static long getNumberOfArrangements(List<Integer> adapters) {
-
-    Map<Integer, Long> adaptersMap = adapters.stream().collect(Collectors.toMap(Integer::intValue, integer -> 0L));
-    adaptersMap.put(0, 1L);
-
-    for (int i = 1; i < adapters.size(); i++) {
-      int current = adapters.get(i);
-      long one = adaptersMap.getOrDefault(current - 1, 0L);
-      long two = adaptersMap.getOrDefault(current - 2, 0L);
-      long three = adaptersMap.getOrDefault(current - 3, 0L);
-
-      adaptersMap.put(current, one + two + three);
-    }
-
-    return adaptersMap.get(adapters.get(adapters.size() - 1));
-  }
-
   private static int getMultipliedDifferences(List<Integer> adapters) {
     int oneJolts = 0;
     int threeJolts = 0;
@@ -58,5 +41,22 @@ public class Solution {
     }
 
     return oneJolts * threeJolts;
+  }
+
+  private static long getNumberOfArrangements(List<Integer> adapters) {
+
+    Map<Integer, Long> adaptersMap = adapters.stream().collect(Collectors.toMap(Integer::intValue, integer -> 0L));
+    adaptersMap.put(0, 1L);
+
+    for (int i = 1; i < adapters.size(); i++) {
+      int current = adapters.get(i);
+      long one = adaptersMap.getOrDefault(current - 1, 0L);
+      long two = adaptersMap.getOrDefault(current - 2, 0L);
+      long three = adaptersMap.getOrDefault(current - 3, 0L);
+
+      adaptersMap.put(current, one + two + three);
+    }
+
+    return adaptersMap.get(adapters.get(adapters.size() - 1));
   }
 }
