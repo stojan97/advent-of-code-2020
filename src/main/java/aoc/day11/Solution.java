@@ -75,10 +75,7 @@ public class Solution {
     int dy = j + DY[k];
 
     if (depth == 1) {
-      if (inRange(map, dx, dy) && map[dx][dy] == '#') {
-        return 1;
-      }
-      return 0;
+      return inRange(map, dx, dy) && map[dx][dy] == '#' ? 1 : 0;
     }
 
     while (inRange(map, dx, dy) && map[dx][dy] == '.') {
