@@ -19,13 +19,13 @@ public class Solution {
   }
 
   /**
-   * Gets the count of occupied seats after no state change.
+   * Gets the count of occupied seats after equilibrium.
    *
    * @param map the given input map
    * @param depthPerDirection -1 (until seat found) or 1 (one iteration)
    * @param occupiedSeats visible occupied seats for an occupied seat to become empty
    *
-   * @return the count of occupied seats after no state change
+   * @return the count of occupied seats after equilibrium
    */
   private static int getCountOccupied(char[][] map, int depthPerDirection, int occupiedSeats) {
 
@@ -86,9 +86,7 @@ public class Solution {
       dy += DY[k];
     }
 
-    char firstSeat = inRange(map, dx, dy) ? map[dx][dy] : '.';
-
-    return firstSeat == '#' ? 1 : 0;
+    return inRange(map, dx, dy) && map[dx][dy] == '#' ? 1 : 0;
   }
 
   private static boolean inRange(char[][] map, int dx, int dy) {
