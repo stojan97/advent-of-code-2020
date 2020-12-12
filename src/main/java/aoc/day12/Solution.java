@@ -7,17 +7,9 @@ import aoc.utils.FileReader;
 
 public class Solution {
 
-  private static final Map<Integer, Integer> dirX = Map.of(
-    2, 0,
-    0, 0,
-    1, -1,
-    3, 1);
+  private static final Map<Integer, Integer> DIR_X = Map.of(2, 0, 0, 0, 1, -1, 3, 1);
 
-  private static final Map<Integer, Integer> dirY = Map
-    .of(2, -1,
-        0, 1,
-        1, 0,
-        3, 0);
+  private static final Map<Integer, Integer> DIR_Y = Map.of(2, -1, 0, 1, 1, 0, 3, 0);
 
   public static void main(String[] args) {
 
@@ -58,8 +50,8 @@ public class Solution {
       }
 
       if (action.equals("F")) {
-        startX += value * dirX.get(dir);
-        startY += value * dirY.get(dir);
+        startX += value * DIR_X.get(dir);
+        startY += value * DIR_Y.get(dir);
       }
 
       if (action.equals("L")) {
@@ -72,7 +64,6 @@ public class Solution {
           dir = 4 + dir;
         }
       }
-
     }
 
     return Math.abs(startX) + Math.abs(startY);
