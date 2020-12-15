@@ -20,7 +20,7 @@ public class Solution {
     }
 
     int numberSpokenFirstPart = getNumberSpoken(startingNumbers, 2020);
-    // Runs for 4 seconds which is fine for solving part 2.
+    // Runs for 4 seconds which is fine for solving part 2 because the algorithm is O(n).
     int numberSpokenSecondPart = getNumberSpoken(startingNumbers, 30000000);
 
     System.out.println("Part 1: " + numberSpokenFirstPart);
