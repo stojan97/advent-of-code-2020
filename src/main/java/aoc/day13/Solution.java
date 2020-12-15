@@ -56,27 +56,25 @@ public class Solution {
   private static long getEarliestTimestamp(List<Bus> buses) {
 
     int index = 0;
+
     long timestamp = buses.get(0).busId;
     long increment = timestamp;
 
     while (index != buses.size() - 1) {
 
-      Bus currentBus = buses.get(index);
       Bus nextBus = buses.get(index + 1);
-      long nextTimestamp = timestamp + (nextBus.index - currentBus.index);
+      long timestampWithOffset = timestamp + nextBus.index;
 
-      if (nextTimestamp % nextBus.busId == 0) {
+      if (timestampWithOffset % nextBus.busId == 0) {
         index++;
         increment = lcm(increment, nextBus.busId);
-        timestamp = nextTimestamp;
         continue;
       }
 
       timestamp += increment;
     }
 
-    Bus lastBus = buses.get(index);
-    return timestamp - lastBus.index;
+    return timestamp;
   }
 
   private static long gcd(long currentBusId, long nextBusId) {
