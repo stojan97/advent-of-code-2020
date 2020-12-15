@@ -41,7 +41,9 @@ public class Solution {
 
     for (Bus bus : buses) {
 
-      int minutes = bus.busId - (firstTimestamp % bus.busId);
+      int rem = firstTimestamp % bus.busId;
+      int minutes = (rem == 0) ? 0 : bus.busId - rem;
+
       if (minutes < minMinutes) {
         minMinutes = minutes;
         minBusId = bus.busId;
