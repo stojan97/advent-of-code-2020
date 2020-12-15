@@ -84,6 +84,7 @@ public class Solution {
     if (nextBusId == 0) {
       return currentBusId;
     }
+
     return gcd(nextBusId, currentBusId % nextBusId);
   }
 
