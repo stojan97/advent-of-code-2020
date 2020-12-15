@@ -14,6 +14,7 @@ public class Solution {
     List<String> lines = FileReader.readLines("day15");
     String[] split = lines.get(0).split(",");
     List<Integer> startingNumbers = new ArrayList<>();
+
     for (String s : split) {
       startingNumbers.add(Integer.parseInt(s));
     }
@@ -21,6 +22,7 @@ public class Solution {
     int numberSpokenFirstPart = getNumberSpoken(startingNumbers, 2020);
     // Runs for 4 seconds which is fine for solving part 2.
     int numberSpokenSecondPart = getNumberSpoken(startingNumbers, 30000000);
+
     System.out.println("Part 1: " + numberSpokenFirstPart);
     System.out.println("Part 2: " + numberSpokenSecondPart);
   }
@@ -29,9 +31,11 @@ public class Solution {
 
     int turn = 0;
     Map<Integer, Range> lastNumbersSpoken = new HashMap<>();
+
     for (; turn < startingNumbers.size(); turn++) {
       lastNumbersSpoken.put(startingNumbers.get(turn), new Range(-1, turn + 1));
     }
+
     int lastNumber = startingNumbers.get(startingNumbers.size() - 1);
     turn++;
 
