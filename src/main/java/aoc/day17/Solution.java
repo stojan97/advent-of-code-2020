@@ -75,7 +75,7 @@ public class Solution {
 
       Cube cube = cubeEntry.getKey();
       int activeCubes = cubeEntry.getValue();
-      // can be improved
+
       if (cube.isActive) {
         cube.isActive = activeCubes == 2 || activeCubes == 3;
       } else {
