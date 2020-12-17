@@ -21,9 +21,9 @@ public class Solution {
 
     Map<Cube, Integer> initialCubes = parseInitialCubes(grid);
     Map<Cube, Integer> initialCubesCopy = new HashMap<>();
-    for (Map.Entry<Cube, Integer> entry: initialCubes.entrySet()) {
+    for (Map.Entry<Cube, Integer> entry : initialCubes.entrySet()) {
       Cube cube = entry.getKey();
-      initialCubesCopy.put(new Cube(cube.x , cube.y, cube.z, cube.w, cube.isActive), 0);
+      initialCubesCopy.put(new Cube(cube.x, cube.y, cube.z, cube.w, cube.isActive), 0);
     }
 
     int activeCubes = getActiveCubes(initialCubes, 1, false);
@@ -45,8 +45,8 @@ public class Solution {
         continue;
       }
 
-      int maxW = (isFourthDimension)? 1 : 0;
-      int minW = (isFourthDimension)? -1 : 0;
+      int maxW = (isFourthDimension) ? 1 : 0;
+      int minW = (isFourthDimension) ? -1 : 0;
 
       for (int w = minW; w <= maxW; w++) {
         for (int z = -1; z <= 1; z++) {
