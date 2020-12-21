@@ -66,6 +66,14 @@ public class Solution {
     return matching;
   }
 
+  /**
+   * Checks whether the sequence is valid and whether can be constructed from the rules (recursively or not).
+   * Usually the sequence is like 42 42 .... 42 31 ..... 31 31, the number of 31s should be less then the 42s on the
+   * right side.
+   *
+   * @param sequence the sequence to be checked
+   * @return true if valid otherwise false
+   */
   private static boolean validateSequence(List<String> sequence) {
 
     if (!sequence.contains("42")) {
@@ -77,6 +85,7 @@ public class Solution {
     }
 
     int i = sequence.indexOf("31");
+    int countFortyTwo = 0;
     int countThirtyOne = 0;
     int j = i;
     int k = i - 1;
@@ -87,19 +96,14 @@ public class Solution {
       countThirtyOne++;
     }
 
-    if (k < 0) {
-      return false;
-    }
-
-    while (countThirtyOne > 0) {
-      if (k < 0 || sequence.get(k).equals("31")) {
+    for (; k >= 0; k--) {
+      if (sequence.get(k).equals("31")) {
         return false;
       }
-      countThirtyOne--;
-      k--;
+      countFortyTwo++;
     }
 
-    return k >= 0;
+    return countFortyTwo > countThirtyOne;
   }
 
   private static int getHowManyMatchesWithoutLoops(Map<String, Rule> rules, List<String> words) {
