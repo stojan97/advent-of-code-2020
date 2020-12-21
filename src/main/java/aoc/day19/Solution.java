@@ -68,8 +68,8 @@ public class Solution {
 
   /**
    * Checks whether the sequence is valid and whether can be constructed from the rules (recursively or not).
-   * Usually the sequence is like 42 42 .... 42 31 ..... 31 31, the number of 31s should be less then the 42s on the
-   * right side.
+   * Usually the sequence is like (42 42 .... 42 31 ..... 31 31), the number of 31s on the right side
+   * should be less then the number of 42s on the left side.
    *
    * @param sequence the sequence to be checked
    * @return true if valid otherwise false
