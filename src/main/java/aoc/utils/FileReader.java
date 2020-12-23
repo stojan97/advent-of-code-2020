@@ -53,16 +53,7 @@ public final class FileReader {
   public static char[][] readLinesAs2dMap(String day) {
 
     List<String> lines = readLines(day);
-
-    char[][] map = new char[lines.size()][lines.get(0).length()];
-
-    for (int i = 0; i < lines.size(); i++) {
-      for (int j = 0; j < lines.get(i).length(); j++) {
-        map[i][j] = lines.get(i).charAt(j);
-      }
-    }
-
-    return map;
+    return Converter.to2dMap(lines);
   }
 
   public static List<Character> toListOfChars(String line) {
