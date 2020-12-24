@@ -27,6 +27,8 @@ public class Solution {
     Coordinate.newCoordinate(2, 13),
     Coordinate.newCoordinate(2, 16));
 
+  private static long product = 1L;
+
   public static void main(String[] args) {
 
     List<List<String>> groups = FileReader.readLinesByGroups("day20");
@@ -35,6 +37,7 @@ public class Solution {
     int topLeft = findProductOfCornersAndFetchSomeCorner(groups);
     List<Tile> tiles = parseTiles(groups);
     int waterRoughness = getWaterRoughness(tiles, topLeft);
+    System.out.println("Part 1: " + product);
     System.out.println("Part 2: " + waterRoughness);
   }
 
@@ -426,7 +429,6 @@ public class Solution {
 
   private static int findProductOfCornersAndFetchSomeCorner(List<List<String>> groups) {
 
-    long product = 1L;
     int indexTopLeft = -1;
 
     List<TileCorners> tiles = parseTilesCorners(groups);
@@ -459,10 +461,7 @@ public class Solution {
         indexTopLeft = i;
         product *= tile.id;
       }
-
     }
-
-    System.out.println("Part 1: " + product);
 
     return indexTopLeft;
   }
