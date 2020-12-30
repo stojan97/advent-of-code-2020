@@ -31,25 +31,25 @@ public final class Solver {
     int n = fields.size();
     int m = fields.stream().map(Field::getPositions).flatMap(Set::stream).collect(Collectors.toSet()).size();
 
-    int[] matchingFields = new int[n];
-    int[] matchingPositions = new int[m];
-    Arrays.fill(matchingFields, -1);
-    Arrays.fill(matchingPositions, -1);
+    int[] matchingForField = new int[n];
+    int[] matchingForPosition = new int[m];
+    Arrays.fill(matchingForField, -1);
+    Arrays.fill(matchingForPosition, -1);
 
     // matching fields
     for (int i = 0; i < n; i++) {
-      if (matchingFields[i] != -1) {
+      if (matchingForField[i] != -1) {
         continue;
       }
       Set<Integer> visitedFields = new HashSet<>();
-      bipartiteMatching(i, fields, visitedFields, matchingFields, matchingPositions);
+      bipartiteMatching(i, fields, visitedFields, matchingForField, matchingForPosition);
     }
 
     // get result
     long res = 1L;
 
     for (int i = 0; i < n; i++) {
-      int position = matchingFields[i];
+      int position = matchingForField[i];
 
       if (fields.get(i).fieldNameContains("departure")) {
         res *= myTicketValues.get(position);
@@ -63,8 +63,8 @@ public final class Solver {
     int current,
     List<Field> fields,
     Set<Integer> visitedFields,
-    int[] matchingFields,
-    int[] matchingPositions) {
+    int[] matchingForField,
+    int[] matchingForPosition) {
 
     if (visitedFields.contains(current)) {
       return false;
@@ -73,11 +73,11 @@ public final class Solver {
     visitedFields.add(current);
 
     for (int pos : fields.get(current).getPositions()) {
-      if (matchingPositions[pos] == -1
-          || bipartiteMatching(matchingPositions[pos], fields, visitedFields, matchingFields, matchingPositions)) {
+      if (matchingForPosition[pos] == -1
+          || bipartiteMatching(matchingForPosition[pos], fields, visitedFields, matchingForField, matchingForPosition)) {
 
-        matchingPositions[pos] = current;
-        matchingFields[current] = pos;
+        matchingForPosition[pos] = current;
+        matchingForField[current] = pos;
         return true;
       }
     }
