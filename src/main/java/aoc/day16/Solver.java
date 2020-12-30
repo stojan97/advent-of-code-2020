@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 /**
  * This is a bonus class for solving part 2 which was intended to be solved with greedy approach. It was obvious that
- * the fields in part 2 can be represented as a two sets of nodes where want to match all the nodes on the left (fields)
+ * the fields in part 2 can be represented as a two sets of nodes where we want to match all the nodes on the left (fields)
  * with the ones on the right (positions).
  */
 public final class Solver {
@@ -115,8 +115,8 @@ public final class Solver {
   enum Approach {
 
     /**
-     * Greedy approach is the one where you analyze the fields and observe that you can you solve with greedy style by
-     * process of eliminating the ones that can be matched. This was the intended solution by the author and my first
+     * Greedy approach is the one where you analyze the fields and observe that you can solve it with greedy style by
+     * process of eliminating the ones that can be immediately matched. This was the intended solution by the author and my first
      * solution during the AOC run.
      */
     GREEDY,
