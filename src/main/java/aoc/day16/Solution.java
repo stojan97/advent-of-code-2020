@@ -37,29 +37,7 @@ public class Solution {
       fields.add(new Field(rule.ticketFieldName, positions));
     }
 
-    fields.sort((field1, field2) -> Integer.compare(field1.positions.size(), field2.positions.size()));
-    long res = 1L;
-    Set<Integer> seen = new HashSet<>();
-
-    for (Field field : fields) {
-
-      field.positions.removeAll(seen);
-
-      if (field.positions.size() != 1) {
-        String msg = "Field positions should contain only one element";
-        throw new RuntimeException(msg);
-      }
-      List<Integer> resList = new ArrayList<>(field.positions);
-      int currentValue = resList.get(0);
-
-      if (field.fieldName.contains("departure")) {
-        res *= myTicketValues.get(currentValue);
-      }
-
-      seen.add(currentValue);
-    }
-
-    return res;
+    return Solver.solve(fields, myTicketValues, Solver.Approach.GREEDY);
   }
 
   private static Set<Integer> getPositions(
@@ -221,18 +199,6 @@ public class Solution {
 
       return (value >= firstRangeStart && value <= firstRangeEnd)
              || (value >= secondRangeStart && value <= secondRangeEnd);
-    }
-  }
-
-  private static class Field {
-
-    String fieldName;
-    Set<Integer> positions;
-
-    public Field(String fieldName, Set<Integer> positions) {
-
-      this.fieldName = fieldName;
-      this.positions = positions;
     }
   }
 
